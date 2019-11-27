@@ -1,0 +1,14 @@
+{
+  "steps": [
+    {
+      "name": "open browser",
+      "element": {
+        "xpath": "ghghshghs"
+      },
+      "action": {
+        "type": "click | find | sendKeys | exists",
+        "value": "in case of sendKeys"
+      }
+    }
+  ]
+}

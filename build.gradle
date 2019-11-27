@@ -1,0 +1,69 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.3.50' // Required for Kotlin integration
+        springBootVersion = "2.2.0.RELEASE"
+        retrofitVersion = "2.6.2"
+        jacksonVersion = "2.10.0"
+        postgresqlVersion = "42.2.5"
+        seleniumVersion = "3.141.59"
+//        seleniumVersion = "2.41.0"
+        testngVersion = "7.0.0"
+    }
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion" // Required for Kotlin integration
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
+        // See https://kotlinlang.org/docs/reference/compiler-plugins.html#spring-support
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}
+
+apply plugin: 'kotlin' // Required for Kotlin integration
+apply plugin: "kotlin-spring" // https://kotlinlang.org/docs/reference/compiler-plugins.html#spring-support
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    baseName = 'kotlin-selenium-app'
+    version = '0.1.0'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // retrofit
+    compile group: "com.squareup.retrofit2", name: "retrofit", version: retrofitVersion
+    compile group: "com.squareup.retrofit2", name: "converter-gson", version: retrofitVersion
+    compile group: "com.squareup.okhttp3", name: "logging-interceptor", version: "3.8.0"
+
+    //kotlin
+    compile group: "org.jetbrains.kotlin", name: "kotlin-stdlib-jdk8", version: kotlinVersion
+    compile group: "org.jetbrains.kotlin", name: "kotlin-reflect", version: kotlinVersion
+
+    // json
+    compile group: "com.fasterxml.jackson.core", name: "jackson-databind", version: jacksonVersion
+    compile group: "com.fasterxml.jackson.module", name: "jackson-module-kotlin", version: jacksonVersion
+
+    // spring
+    compile group: "org.springframework.boot", name: "spring-boot-starter-web", version: springBootVersion
+//    compile group: "org.springframework.boot", name: "spring-boot-starter-security", version: springBootVersion
+//    compile group: "org.springframework.boot", name: "spring-boot-starter-jdbc", version: springBootVersion
+    compile group: "org.springframework.boot", name: "spring-boot-starter-data-jpa", version: springBootVersion
+
+    //PostgreSQL
+    compile group: "org.postgresql", name: "postgresql", version: postgresqlVersion
+
+    //selenium
+    compile group: "org.seleniumhq.selenium", name: "selenium-java", version: seleniumVersion
+    compile group: "org.seleniumhq.selenium", name: "selenium-support", version: seleniumVersion
+    compile group: "org.testng", name: "testng", version: testngVersion
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion" // Required for Kotlin integration
+    compile "org.springframework.boot:spring-boot-starter-web"
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
