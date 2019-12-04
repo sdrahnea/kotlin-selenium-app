@@ -36,7 +36,7 @@ open class ScenarioService {
     }
 
     private fun navigate(step: Step) {
-        driver.navigate().to(step.element?.xpath)
+        driver.navigate().to(step.action.value)
     }
 
     private fun sendKeys(step: Step) {
