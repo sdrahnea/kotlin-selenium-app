@@ -1,13 +1,43 @@
 {
+  "name": "happy path",
   "steps": [
     {
-      "name": "open browser",
-      "element": {
-        "xpath": "ghghshghs"
-      },
+      "name": "step 1: navigate to login page",
       "action": {
-        "type": "click | find | sendKeys | exists",
-        "value": "in case of sendKeys"
+        "type": "NAVIGATE",
+        "value": "url"
+      }
+    },
+    {
+      "name": "step 2: enter user name",
+      "action": {
+        "type": "SEND_KEYS",
+        "value": "email@email.com"
+      },
+      "element": {
+        "name": "username input text",
+        "xpath": "/html/body/div/div/div/div/div[2]/div/div/form/div[1]/div/div[1]/div/input"
+      }
+    },
+    {
+      "name": "step 3: enter user password",
+      "action": {
+        "type": "SEND_KEYS",
+        "value": "password"
+      },
+      "element": {
+        "name": "password input text",
+        "xpath": "/html/body/div/div/div/div/div[2]/div/div/form/div[2]/div/div[1]/div/input"
+      }
+    },
+    {
+      "name": "step 4: press login button",
+      "action": {
+        "type": "CLICK"
+      },
+      "element": {
+        "name": "login password",
+        "xpath": "/html/body/div/div/div/div/div[2]/div/div/form/button/div"
       }
     }
   ]
